@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Apresentação Final — Community Bank API — IFRS</title>
+  <style>
+    @page {
+      size: 297mm 210mm; /* A4 Paisagem */
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1e293b;
+      background: #0f172a;
+      overflow-x: hidden;
+    }
+    .slide {
+      width: 297mm;
+      height: 210mm;
+      max-width: 100vw;
+      max-height: 100vh;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 36px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+    @media screen {
+      body {
+        background: #0f172a;
+        padding: 20px 0;
+      }
+      .slide {
+        margin-bottom: 24px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        border-radius: 8px;
+        height: 210mm;
+      }
+    }
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #0f766e;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .slide-header-left {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #0f766e;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .slide-header-right {
+      font-size: 8.5pt;
+      color: #64748b;
+    }
+    .slide-title {
+      font-size: 19pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 4px 0;
+    }
+    .slide-subtitle {
+      font-size: 11pt;
+      color: #475569;
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      font-size: 10pt;
+      line-height: 1.45;
+    }
+    .slide-footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8pt;
+      color: #94a3b8;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      flex: 1;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      flex: 1;
+    }
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 12px 14px;
+    }
+    .card-teal {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-left: 4px solid #16a34a;
+    }
+    .card-blue {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid #2563eb;
+    }
+    .card-amber {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-left: 4px solid #d97706;
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 10.5pt;
+      margin-bottom: 6px;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-teal .card-title { color: #15803d; }
+    .card-blue .card-title { color: #1e40af; }
+    .card-amber .card-title { color: #92400e; }
+    ul {
+      margin: 0 0 8px 0;
+      padding-left: 18px;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    p {
+      margin: 0 0 8px 0;
+    }
+    code {
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 8.5pt;
+      background: #f1f5f9;
+      padding: 1px 4px;
+      border-radius: 3px;
+      color: #0f766e;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 7pt;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tag-green { background: #dcfce7; color: #15803d; }
+    .tag-blue { background: #dbeafe; color: #1d4ed8; }
+    .tag-amber { background: #fef3c7; color: #b45309; }
+    .highlight {
+      color: #0f766e;
+      font-weight: 700;
+    }
+    /* Controls for screen viewing */
+    #nav-indicator {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(15, 23, 42, 0.85);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 9pt;
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="nav-indicator">Use as setas ← → para navegar</div>
+
+  <!-- SLIDE 1: CAPA -->
+  <div class="slide" id="slide-1" style="background: linear-gradient(135deg, #042f2e 0%, #0f172a 100%); color: white;">
+    <div style="border-bottom: 2px solid #14b8a6; padding-bottom: 12px; display: flex; justify-content: space-between;">
+      <span style="font-size: 10pt; font-weight: 700; color: #2dd4bf; letter-spacing: 1px; text-transform: uppercase;">
+        IFRS — Campus Rio Grande · Princípios e Padrões de Arquitetura
+      </span>
+      <span style="font-size: 9pt; color: #94a3b8;">Apresentação Final · 2026/2</span>
+    </div>
+    <div style="margin: auto 0;">
+      <div style="display: inline-block; background: #14b8a6; color: #042f2e; font-size: 8.5pt; font-weight: 800; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Projeto Integrador de Arquitetura de Software
+      </div>
+      <h1 style="font-size: 30pt; color: #ffffff; margin: 0 0 12px 0; line-height: 1.15; font-weight: 800;">
+        Community Bank API
+      </h1>
+      <div style="font-size: 14pt; color: #99f6e4; font-weight: 400; max-width: 800px; margin-bottom: 20px;">
+        Arquitetura de uma plataforma de serviços financeiros solidários e moeda social digital: do modelo conceitual à implementação em camadas e hexagonal.
+      </div>
+      <div style="background: rgba(255,255,255,0.06); border-left: 4px solid #2dd4bf; padding: 12px 18px; border-radius: 4px; max-width: 650px;">
+        <div style="font-size: 10.5pt; color: #f1f5f9;"><b>Aluna:</b> Francine Gonçalves Nunes Moraes</div>
+        <div style="font-size: 10pt; color: #cbd5e1;"><b>Orientadora:</b> Profa. Beatriz Costa</div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid rgba(255,255,255,0.15); padding-top: 10px; display: flex; justify-content: space-between; font-size: 8.5pt; color: #94a3b8;">
+      <span>Repositório: github.com/FranGnMoraes/community-bank-api</span>
+      <span>Rio Grande, Dezembro de 2026</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: CONTEXTO E VISÃO -->
+  <div class="slide" id="slide-2">
+    <div class="slide-header">
+      <div class="slide-header-left">1. Contexto & Visão do Produto</div>
+      <div class="slide-header-right">Community Bank API</div>
+    </div>
+    <div class="slide-title">Serviços Financeiros Solidários e Moeda Social</div>
+    <div class="slide-subtitle">Inclusão socioprodutiva e geração de renda em territórios de baixa renda</div>
+    <div class="slide-body">
+      <div class="grid-2">
+        <div class="card card-teal">
+          <div class="card-title">Propósito e Problema Real</div>
+          <p>
+            Bancos comunitários (inspirados na metodologia do Banco Palmas e da Rede Brasileira de Bancos Comunitários) operam onde os bancos comerciais não chegam.
+          </p>
+          <ul>
+            <li><b>Confiança Coletiva:</b> O dinheiro pertence à comunidade. Cada transação exige rastreabilidade total e transparência auditável em assembleias públicas.</li>
+            <li><b>Acesso Inclusivo:</b> Moradores utilizam celulares simples, muitas vezes com conexões de dados 3G/4G instáveis.</li>
+            <li><b>Sustentabilidade Operacional:</b> Equipe enxuta e orçamento próximo de zero. A solução técnica precisa ter custo zero de licença e baixa complexidade de manutenção.</li>
+          </ul>
+        </div>
+        <div class="card card-blue">
+          <div class="card-title">Atores & Stakeholders Principais</div>
+          <ul>
+            <li><b>Correntista (Morador):</b> Abertura de conta simplificada, depósitos e acompanhamento de saldo.</li>
+            <li><b>Empreendedor Solidário:</b> Artesãos, costureiras e agricultura familiar que demandam microcrédito produtivo a taxa zero de juros.</li>
+            <li><b>Gerente Comunitário:</b> Operador local que valida os cadastros e apoia a análise social do crédito.</li>
+            <li><b>Comunidade / Conselho Fiscal:</b> Moradores que fiscalizam os recursos via portal de prestação de contas diária e semanal.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Entrega 1 (Visão) · Contexto e Stakeholders</span>
+      <span>Slide 2 / 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: DRIVERS ARQUITETURAIS -->
+  <div class="slide" id="slide-3">
+    <div class="slide-header">
+      <div class="slide-header-left">2. Drivers Arquiteturais</div>
+      <div class="slide-header-right">Decisões Guiadas por Qualidade</div>
+    </div>
+    <div class="slide-title">Requisitos Arquiteturalmente Significativos (ASRs)</div>
+    <div class="slide-subtitle">"Um sistema pode funcionar e ainda ser ruim" — A arquitetura molda como ele se comporta</div>
+    <div class="slide-body">
+      <div class="grid-3">
+        <div class="card card-teal">
+          <div class="card-title">Atributos Críticos</div>
+          <ul>
+            <li><b>QA-01 (Desempenho):</b> Saldo e extrato respondidos em até 2 s (p95) em horários de pico comunitário.</li>
+            <li><b>QA-02 (Segurança):</b> Acesso sem autenticação é bloqueado e logado (Alta prioridade).</li>
+            <li><b>QA-04 (Auditabilidade):</b> Todo lançamento financeiro é imutável e rastreável.</li>
+          </ul>
+        </div>
+        <div class="card card-blue">
+          <div class="card-title">Manutenibilidade & Testes</div>
+          <ul>
+            <li><b>QA-06 (Modificabilidade):</b> Nova política de crédito incorporada em até 1 dia sem alterar controllers.</li>
+            <li><b>QA-10 (Testabilidade):</b> 100% das regras cruciais testáveis sem precisar subir banco ou servidor HTTP.</li>
+            <li><b>QA-05 (Consistência):</b> Falhas no meio da transação não deixam saldo corrompido.</li>
+          </ul>
+        </div>
+        <div class="card card-amber">
+          <div class="card-title">Restrições Técnicas</div>
+          <ul>
+            <li><b>R1 (Stack Definida):</b> Node.js, TypeScript e Express (guia da disciplina).</li>
+            <li><b>R4 (Custo Zero):</b> Sem dependência de serviços pagos ou infraestrutura cara de nuvem.</li>
+            <li><b>R6 (Mobile Leve):</b> Backend centralizado servindo cliente magro para baixo consumo de dados.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Cenários de Atributos de Qualidade Mensuráveis (Aula 4 & Entrega 1)</span>
+      <span>Slide 3 / 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: ABORDAGEM ARQUITETURAL GLOBAL -->
+  <div class="slide" id="slide-4">
+    <div class="slide-header">
+      <div class="slide-header-left">3. Abordagem Arquitetural Global</div>
+      <div class="slide-header-right">Estrutura & Estilo</div>
+    </div>
+    <div class="slide-title">Monólito Modular no Estilo Cliente-Servidor</div>
+    <div class="slide-subtitle">Simplicidade operacional com isolamento estrito de domínios</div>
+    <div class="slide-body">
+      <div class="grid-2">
+        <div class="card card-blue">
+          <div class="card-title">Por que Monólito Modular?</div>
+          <p>
+            Optou-se deliberadamente por <b>não distribuir o sistema em microserviços prematuros</b>.
+          </p>
+          <ul>
+            <li><b>Deploy Único (Single Deployable):</b> Executável com um único comando <code>npm start</code>, viabilizando operação por equipe de uma pessoa.</li>
+            <li><b>Chamadas Locais (In-Process):</b> Latência sub-milissegundo entre módulos, sem o custo de rede ou serialização de microserviços.</li>
+            <li><b>Bounded Contexts Explícitos:</b> Pastas isoladas (<code>accounts</code>, <code>credit</code>) sem vazamento de imports, preservando o caminho de evolução futuro.</li>
+          </ul>
+        </div>
+        <div class="card card-teal">
+          <div class="card-title">Princípios Centrais Adotados</div>
+          <ul>
+            <li><b>Cliente Magro (Thin Client):</b> Todas as regras de negócio, cálculos monetários e auditorias residem no servidor; o cliente web/mobile apenas exibe e envia entradas.</li>
+            <li><b>Dinheiro Exato (Money Value Object):</b> Valores armazenados estritamente em centavos inteiros (integers), eliminando erros de arredondamento IEEE 754 de floats.</li>
+            <li><b>Lançamentos Imutáveis:</b> O saldo não é um campo editável arbitrário, mas o resultado somatório de lançamentos contábeis auditáveis (ideia de Event Sourcing).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Entrega 2 · Proposta Arquitetural</span>
+      <span>Slide 4 / 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: FATIAS VERTICAIS: CAMADAS VS HEXAGONAL -->
+  <div class="slide" id="slide-5">
+    <div class="slide-header">
+      <div class="slide-header-left">4. Fatias Verticais do Sistema</div>
+      <div class="slide-header-right">Design Arquitetural dos Módulos</div>
+    </div>
+    <div class="slide-title">Duas Abordagens Coexistindo com Coerência</div>
+    <div class="slide-subtitle">Arquitetura em Camadas (Módulo Contas) e Arquitetura Hexagonal (Módulo Crédito)</div>
+    <div class="slide-body">
+      <div class="grid-2">
+        <div class="card card-blue">
+          <div class="card-title">Módulo Contas: Arquitetura em 4 Camadas</div>
+          <p>Aplicada na funcionalidade de <b>Depósito em Conta Corrente</b>:</p>
+          <ul>
+            <li><b>Apresentação:</b> <code>accounts.routes.ts</code>, <code>AccountsController</code>, <code>AccountPresenter</code>.</li>
+            <li><b>Aplicação:</b> <code>DepositUseCase</code>, <code>OpenAccountUseCase</code>.</li>
+            <li><b>Domínio:</b> Entidades <code>Account</code>, <code>Transaction</code>, <code>DepositPolicy</code> (Strategy).</li>
+            <li><b>Infraestrutura:</b> <code>InMemoryAccountRepository</code> (implementa interface do domínio).</li>
+          </ul>
+          <p style="font-size: 8.5pt; color: #475569;">
+            <i>Fluxo:</i> Cliente → Controller → Use Case → Domain → Repository → Dados.
+          </p>
+        </div>
+        <div class="card card-teal">
+          <div class="card-title">Módulo Crédito: Arquitetura Hexagonal (Ports & Adapters)</div>
+          <p>Aplicada na <b>Solicitação de Crédito Solidário</b> (S4):</p>
+          <ul>
+            <li><b>Driving Adapter:</b> <code>SolidarityCreditController</code> (HTTP Express).</li>
+            <li><b>Input Port (Primária):</b> Contrato puro <code>CreateSolidarityCreditApplication</code>.</li>
+            <li><b>Use Case:</b> <code>CreateSolidarityCreditUseCase</code> orquestrando o fluxo.</li>
+            <li><b>Domínio Puro:</b> <code>CreditRequest</code>, <code>SolidarityEnterprise</code> (elegibilidade).</li>
+            <li><b>Output Port (Secundária):</b> <code>CreditRequestRepository</code>.</li>
+            <li><b>Driven Adapter:</b> <code>SqliteCreditRequestRepository</code> (persistência real em banco SQLite).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Comparativo Arquitetural · Fatias Verticais Concluídas</span>
+      <span>Slide 5 / 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: DETALHAMENTO DA ARQUITETURA HEXAGONAL -->
+  <div class="slide" id="slide-6">
+    <div class="slide-header">
+      <div class="slide-header-left">5. Arquitetura Hexagonal em Detalhes</div>
+      <div class="slide-header-right">Módulo de Crédito Solidário</div>
+    </div>
+    <div class="slide-title">Portas e Adaptadores: O Núcleo Completamente Blindado</div>
+    <div class="slide-subtitle">Isolamento total de protocolos de transporte e de mecanismos de armazenamento</div>
+    <div class="slide-body">
+      <div class="card" style="background: #f0fdf4; border: 2px solid #16a34a; margin-bottom: 12px; padding: 10px 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 8.5pt; font-weight: bold; color: #166534;">
+          <span style="background: #dbeafe; color: #1e40af; padding: 3px 8px; border-radius: 4px;">DRIVING ADAPTER (HTTP)</span>
+          <span>➜ [INPUT PORT] ➜</span>
+          <span style="background: #ffffff; color: #059669; border: 1.5px solid #059669; padding: 3px 8px; border-radius: 4px;">USE CASE & DOMÍNIO PURO</span>
+          <span>➜ [OUTPUT PORT] ➜</span>
+          <span style="background: #fce7f3; color: #9d174d; padding: 3px 8px; border-radius: 4px;">DRIVEN ADAPTER (SQLITE)</span>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title" style="font-size: 9.5pt;">Regras de Negócio Sociais</div>
+          <ul>
+            <li><b>Juros Zero:</b> Crédito produtivo comunitário a 0% a.m. para fortalecer a renda local.</li>
+            <li><b>Teto de Microcrédito:</b> Limite estrito de R$ 15.000,00 por empreendimento.</li>
+            <li><b>Elegibilidade Comunitária:</b> Método <code>isEligible()</code> bloqueia atividades especulativas.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="font-size: 9.5pt;">Inversão de Dependências</div>
+          <ul>
+            <li>O caso de uso desconhece Express, Request, Response ou JSON.</li>
+            <li>O domínio desconhece SQL, ORM, tabelas ou comandos de persistência.</li>
+            <li>Todas as setas de dependência de compilação apontam para o centro.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="font-size: 9.5pt;">Persistência em Banco Real</div>
+          <ul>
+            <li>Implementado com <code>node:sqlite</code> nativo do Node.js 26.</li>
+            <li>Gravação em tabela relacional <code>credit_requests</code> em arquivo durável.</li>
+            <li>Adapter em memória mantido para testes de unidade instantâneos.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Atividade Prática · Arquitetura Hexagonal</span>
+      <span>Slide 6 / 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: C4 MODEL: CONTEXTO E CONTÊINERES -->
+  <div class="slide" id="slide-7">
+    <div class="slide-header">
+      <div class="slide-header-left">6. Documentação C4 Model</div>
+      <div class="slide-header-right">Níveis de Abstração 1 e 2</div>
+    </div>
+    <div class="slide-title">Diagramas de Contexto e Contêineres</div>
+    <div class="slide-subtitle">Mapeando o ecossistema do Banco Comunitário e seus blocos executáveis</div>
+    <div class="slide-body">
+      <div class="grid-2">
+        <div class="card card-blue">
+          <div class="card-title">C4 Nível 1: Diagrama de Contexto</div>
+          <p>Define a fronteira do sistema e relacionamentos externos:</p>
+          <ul>
+            <li><b>Pessoas:</b> Correntista (abre conta e deposita), Empreendedor (solicita crédito solidário), Gerente Local (aprova crédito e gere contas).</li>
+            <li><b>Sistema Central:</b> <i>Community Bank Platform</i>.</li>
+            <li><b>Sistemas Externos:</b> Provedor de Mensagens (SMS/WhatsApp para alertas) e Rede Brasileira de Bancos Comunitários (intercâmbio de moedas sociais).</li>
+          </ul>
+        </div>
+        <div class="card card-teal">
+          <div class="card-title">C4 Nível 2: Diagrama de Contêineres</div>
+          <p>Evidencia os executáveis e armazenamentos do sistema:</p>
+          <ul>
+            <li><b>Web App / Mobile PWA:</b> SPA responsiva em TypeScript como cliente magro para baixo consumo de dados móveis.</li>
+            <li><b>Community Bank API:</b> Backend executável em Node.js + Express contendo os módulos Contas, Crédito e Transparência.</li>
+            <li><b>Banco de Dados Relacional:</b> SQLite para desenvolvimento ágil e PostgreSQL para produção (ACID).</li>
+            <li><b>Audit Storage:</b> Armazenamento de relatórios de prestação de contas pública.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Entrega 3 · Documentação C4 (Níveis 1 e 2)</span>
+      <span>Slide 7 / 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: C4 MODEL: COMPONENTES DA API -->
+  <div class="slide" id="slide-8">
+    <div class="slide-header">
+      <div class="slide-header-left">7. Documentação C4 Model</div>
+      <div class="slide-header-right">Nível 3: Backend API</div>
+    </div>
+    <div class="slide-title">Diagrama de Componentes da API Backend</div>
+    <div class="slide-subtitle">Detalhamento dos controladores, casos de uso, entidades e adaptadores internos</div>
+    <div class="slide-body">
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title" style="color: #2563eb;">1. Apresentação & Entrada</div>
+          <ul>
+            <li><b>AccountsController:</b> Roteamento e formatação de contas e depósitos.</li>
+            <li><b>SolidarityCreditController:</b> Driving Adapter que recebe HTTP e chama a Input Port.</li>
+            <li><b>ErrorHandler:</b> Middleware centralizado (garante integridade conceitual).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: #059669;">2. Aplicação & Domínio</div>
+          <ul>
+            <li><b>Input Port:</b> Contrato de entrada de crédito.</li>
+            <li><b>Use Cases:</b> <code>DepositUseCase</code>, <code>CreateSolidarityCreditUseCase</code>.</li>
+            <li><b>Entidades:</b> <code>Account</code>, <code>Transaction</code>, <code>CreditRequest</code>, <code>SolidarityEnterprise</code>, <code>Money</code>.</li>
+            <li><b>Output Ports:</b> Interfaces puras de persistência.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: #db2777;">3. Infraestrutura</div>
+          <ul>
+            <li><b>SqliteCreditRepository:</b> Driven Adapter relacional via <code>node:sqlite</code>.</li>
+            <li><b>InMemoryAccountRepository:</b> Repositório em memória para contas.</li>
+            <li><b>Composition Root:</b> <code>container.ts</code> é o único ponto que instancia e injeta as implementações.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Entrega 3 · C4 Component Diagram (Nível 3)</span>
+      <span>Slide 8 / 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: ADRs E TRADE-OFFS -->
+  <div class="slide" id="slide-9">
+    <div class="slide-header">
+      <div class="slide-header-left">8. Decisões Arquiteturais</div>
+      <div class="slide-header-right">Trade-offs Fundamentados</div>
+    </div>
+    <div class="slide-title">Architecture Decision Records (ADRs)</div>
+    <div class="slide-subtitle">Toda escolha arquitetural é um compromisso: benefícios versus custos e riscos</div>
+    <div class="slide-body">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title" style="font-size: 9.5pt;">ADR-0001: Arquitetura Hexagonal no Crédito</div>
+          <p><b>Decisão:</b> Isolar o módulo de crédito com Ports & Adapters.</p>
+          <p><b>Benefício:</b> Testabilidade pura sem servidor (QA-10); proteção de regras sociais dinâmicas.</p>
+          <p><b>Trade-off:</b> Mais interfaces, arquivos e conversões manuais de DTOs.</p>
+        </div>
+        <div class="card">
+          <div class="card-title" style="font-size: 9.5pt;">ADR-0002: Persistência Relacional com Repositórios</div>
+          <p><b>Decisão:</b> SQLite nativo / PostgreSQL sem ORM pesado.</p>
+          <p><b>Benefício:</b> Transações ACID atômicas para saldo financeiro; zero dependências extras.</p>
+          <p><b>Trade-off:</b> Mapeamento de SQL manual e gerenciamento próprio de schemas.</p>
+        </div>
+        <div class="card">
+          <div class="card-title" style="font-size: 9.5pt;">ADR-0003: Monólito Modular</div>
+          <p><b>Decisão:</b> Deploy único com Bounded Contexts em pastas separadas.</p>
+          <p><b>Benefício:</b> Custo zero de infraestrutura (R4); latência sub-milissegundo in-process.</p>
+          <p><b>Trade-off:</b> Requer disciplina para não misturar imports entre módulos.</p>
+        </div>
+        <div class="card">
+          <div class="card-title" style="font-size: 9.5pt;">ADR-0004: Autenticação Stateless via JWT + RBAC</div>
+          <p><b>Decisão:</b> Tokens assinados para Correntista, Gerente e Comunidade.</p>
+          <p><b>Benefício:</b> Não derruba a sessão em oscilações de 3G/4G celular (R6); alta escala.</p>
+          <p><b>Trade-off:</b> Revogação imediata de token exige controle de blacklist.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Entrega 3 · 4 ADRs Formais Aceitos</span>
+      <span>Slide 9 / 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: RESULTADOS PRÁTICOS E VALIDAÇÃO -->
+  <div class="slide" id="slide-10">
+    <div class="slide-header">
+      <div class="slide-header-left">9. Validação e Qualidade de Código</div>
+      <div class="slide-header-right">Resultados dos Testes</div>
+    </div>
+    <div class="slide-title">29 Testes Automatizados Executando em 1.2s</div>
+    <div class="slide-subtitle">Validação integral de domínio, portas, casos de uso e rotas HTTP</div>
+    <div class="slide-body">
+      <div class="grid-2">
+        <div class="card card-teal">
+          <div class="card-title">Resumo da Execução (node:test nativo)</div>
+          <ul>
+            <li><b>29 testes automatizados</b> em 8 suítes (100% passando).</li>
+            <li><b>Tempo total de execução:</b> ~1.2 segundos (sem overhead de frameworks de teste pesados).</li>
+            <li><b>TypeScript Strict Mode:</b> Compilação sem nenhum erro em <code>npm run typecheck</code> e <code>npm run build</code>.</li>
+            <li><b>Testes de Ponta a Ponta HTTP:</b> Efetuados com <code>fetch</code> nativo subindo o servidor em porta dinâmica (<code>listen(0)</code>).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Cobertura por Módulo</div>
+          <ul>
+            <li><b>Módulo Contas:</b> Abertura de conta, CPF com 11 dígitos, depósitos que incrementam saldo, recusa de valores negativos ou contas bloqueadas, e limites de depósito.</li>
+            <li><b>Módulo Crédito Solidário:</b> Validação de empreendimento solidário e cooperativas, filtro de atividades especulativas, teto de R$ 15.000,00, cálculo de parcelas sem juros, persistência em SQLite e rotas HTTP.</li>
+            <li><b>Tratamento de Erros:</b> Todos os erros padronizados em <code>{ error: { code, message } }</code>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Validação Prática · Comprovando os Cenários de Qualidade</span>
+      <span>Slide 10 / 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: EVOLUÇÃO: SEGURANÇA DE APIS -->
+  <div class="slide" id="slide-11">
+    <div class="slide-header">
+      <div class="slide-header-left">10. Evolução da Arquitetura</div>
+      <div class="slide-header-right">Entrega 4 · Pesquisa de Segurança</div>
+    </div>
+    <div class="slide-title">Mecanismos de Segurança de APIs</div>
+    <div class="slide-subtitle">Blindagem em camadas para o patrimônio e a privacidade da comunidade</div>
+    <div class="slide-body">
+      <div class="grid-3">
+        <div class="card card-blue">
+          <div class="card-title">1. HTTPS/TLS 1.3 + mTLS</div>
+          <p><b>Problema:</b> Interceptação de dados em Wi-Fi público e redes abertas de celular.</p>
+          <p><b>Aplicação:</b> Terminação TLS no Ingress / Proxy reverso; mTLS para comunicação B2B com a Rede de Bancos Comunitários.</p>
+          <p><b>Trade-off:</b> Sobrecarga de handshake em aparelhos antigos; mitigado por TLS 1.3 0-RTT.</p>
+        </div>
+        <div class="card card-teal">
+          <div class="card-title">2. JWT + RBAC Seguro</div>
+          <p><b>Problema:</b> Sessões caem com instabilidade de rede celular; falta de controle de perfis.</p>
+          <p><b>Aplicação:</b> Middleware de autenticação na borda; claims com ID, papel e comunidade.</p>
+          <p><b>Trade-off:</b> Tokens não revogáveis instantaneamente; uso de Access Token curto (15min) + Refresh Token em cookie HTTP-only.</p>
+        </div>
+        <div class="card card-amber">
+          <div class="card-title">3. Rate Limiting Adaptativo</div>
+          <p><b>Problema:</b> Ataques de força bruta, DoS e esgotamento de servidores modestos.</p>
+          <p><b>Aplicação:</b> Middleware de limitação por IP (rotas abertas) e por usuário logado (operações financeiras).</p>
+          <p><b>Trade-off:</b> Risco de falso positivo em CGNAT móvel (IP compartilhado); mitigado por regras suaves por IP.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Entrega 4 · Segurança de APIs</span>
+      <span>Slide 11 / 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: EVOLUÇÃO: TECNOLOGIAS FUTURAS -->
+  <div class="slide" id="slide-12">
+    <div class="slide-header">
+      <div class="slide-header-left">11. Evolução da Arquitetura</div>
+      <div class="slide-header-right">Entrega 4 · Tecnologias Futuras</div>
+    </div>
+    <div class="slide-title">Novas Ferramentas e Tecnologias Planejadas</div>
+    <div class="slide-subtitle">Roteiro tecnológico coerente com as necessidades do Banco Comunitário</div>
+    <div class="slide-body">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title" style="color: #0f766e;">1. API Gateway (Kong / Traefik)</div>
+          <p>Centraliza autenticação, TLS e rate limiting, desacoplando o monólito de tarefas de rede e viabilizando a extração de futuros microserviços.</p>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: #2563eb;">2. Mensageria Event-Driven (RabbitMQ)</div>
+          <p>Desacopla notificações de SMS e extratos do fluxo síncrono da requisição HTTP, garantindo resiliência (nenhuma mensagem é perdida) e resposta instantânea.</p>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: #7c3aed;">3. Observabilidade (OpenTelemetry + Grafana)</div>
+          <p>Tracing distribuído e métricas de desempenho em tempo real, permitindo exibir painéis públicos de prestação de contas e liquidez para a comunidade.</p>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: #dc2626;">4. Cache Distribuído (Redis)</div>
+          <p>Acelera consultas públicas frequentes e relatórios de transparência de 50ms para &lt;2ms, reduzindo a carga no banco de dados relacional em até 80%.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Entrega 4 · Tecnologias Futuras</span>
+      <span>Slide 12 / 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: APRENDIZADOS, DIFICULDADES E DECISÕES REVISTAS -->
+  <div class="slide" id="slide-13">
+    <div class="slide-header">
+      <div class="slide-header-left">12. Reflexão Crítica</div>
+      <div class="slide-header-right">Maturidade da Engenharia de Software</div>
+    </div>
+    <div class="slide-title">Aprendizados, Dificuldades e Decisões Revistas</div>
+    <div class="slide-subtitle">A evolução da maturidade arquitetural ao longo da disciplina</div>
+    <div class="slide-body">
+      <div class="grid-3">
+        <div class="card card-teal">
+          <div class="card-title">Principais Aprendizados</div>
+          <ul>
+            <li><b>Arquitetura não é framework:</b> O domínio do banco comunitário subsiste intacto mesmo trocando Express ou SQLite.</li>
+            <li><b>Trade-offs explícitos:</b> Não existe solução perfeita; cada padrão arquitetural tem um custo cognitivo e operacional.</li>
+            <li><b>ADD (Attribute-Driven Design):</b> Decisões orientadas a cenários mensuráveis, não a modismos.</li>
+          </ul>
+        </div>
+        <div class="card card-amber">
+          <div class="card-title">Dificuldades Enfrentadas</div>
+          <ul>
+            <li><b>Evitar Overengineering:</b> Resistir à tentação de criar interfaces e DTOs excessivos onde uma função simples resolvia.</li>
+            <li><b>Isolamento de Tipos:</b> Garantir que nenhum tipo do Express vazasse acidentalmente para portas ou casos de uso.</li>
+            <li><b>Persistência de Decimais:</b> Manter a disciplina estrita do Money em centavos inteiros em todas as camadas.</li>
+          </ul>
+        </div>
+        <div class="card card-blue">
+          <div class="card-title">Decisões Revistas</div>
+          <ul>
+            <li><b>Do Mock ao SQLite Real:</b> A evolução de um repositório em memória para um banco de dados relacional persistente com zero configuração.</li>
+            <li><b>Refinamento de Erros:</b> Centralização do tratamento de erro em um único middleware eliminando duplicações em controllers.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Lições Aprendidas · Princípios e Padrões de Arquitetura</span>
+      <span>Slide 13 / 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: CONCLUSÃO E PERGUNTAS -->
+  <div class="slide" id="slide-14" style="background: linear-gradient(135deg, #042f2e 0%, #0f172a 100%); color: white;">
+    <div style="border-bottom: 2px solid #14b8a6; padding-bottom: 12px; display: flex; justify-content: space-between;">
+      <span style="font-size: 10pt; font-weight: 700; color: #2dd4bf; letter-spacing: 1px; text-transform: uppercase;">
+        Community Bank API · Conclusão
+      </span>
+      <span style="font-size: 9pt; color: #94a3b8;">IFRS — 2026</span>
+    </div>
+    <div style="margin: auto 0; text-align: center;">
+      <h1 style="font-size: 28pt; color: #ffffff; margin-bottom: 14px;">
+        Obrigada!
+      </h1>
+      <p style="font-size: 13pt; color: #99f6e4; max-width: 750px; margin: 0 auto 24px auto;">
+        Uma arquitetura robusta, sustentável e preparada para empoderar economicamente as comunidades de baixa renda.
+      </p>
+      <div style="display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 14px 28px; border-radius: 8px; text-align: left;">
+        <div style="font-size: 10.5pt; color: #f1f5f9; margin-bottom: 4px;"><b>Aluna:</b> Francine Gonçalves Nunes Moraes</div>
+        <div style="font-size: 10pt; color: #cbd5e1; margin-bottom: 4px;"><b>Orientadora:</b> Profa. Beatriz Costa</div>
+        <div style="font-size: 9.5pt; color: #2dd4bf;"><b>Repositório:</b> github.com/FranGnMoraes/community-bank-api</div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid rgba(255,255,255,0.15); padding-top: 10px; display: flex; justify-content: space-between; font-size: 8.5pt; color: #94a3b8;">
+      <span>Espaço aberto para dúvidas e considerações da banca</span>
+      <span>Slide 14 / 14</span>
+    </div>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 14;
+
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
+      const el = document.getElementById('slide-' + currentSlide);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+      document.getElementById('nav-indicator').innerText = `Slide ${currentSlide} de ${totalSlides} (Use ← →)`;
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        showSlide(currentSlide + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        showSlide(currentSlide - 1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        showSlide(1);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        showSlide(totalSlides);
+      }
+    });
+  </script>
+</body>
+</html>

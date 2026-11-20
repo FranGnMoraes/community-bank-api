@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Roteiro do Apresentador — Apresentação Final — Community Bank API</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.5;
+      font-size: 10pt;
+      margin: 0;
+      padding: 0;
+    }
+    .header-inst {
+      border-bottom: 2px solid #0f766e;
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+      font-size: 9pt;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .header-inst b {
+      color: #0f766e;
+    }
+    .title-box {
+      background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+      border-left: 6px solid #0d9488;
+      padding: 16px 20px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 18pt;
+      color: #0f172a;
+    }
+    .subtitle {
+      font-size: 11pt;
+      color: #334155;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      font-size: 9pt;
+      color: #475569;
+      border-top: 1px dashed #cbd5e1;
+      padding-top: 8px;
+    }
+    h2 {
+      color: #0f766e;
+      font-size: 12.5pt;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    h3 {
+      color: #1e293b;
+      font-size: 10.5pt;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+    .slide-block {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 5px solid #0d9488;
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+    }
+    .slide-header-tag {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      color: #0f766e;
+      font-size: 9.5pt;
+      margin-bottom: 6px;
+    }
+    .time-badge {
+      background: #e2e8f0;
+      color: #334155;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 8pt;
+    }
+    blockquote {
+      background: #ffffff;
+      border-left: 3px solid #3b82f6;
+      margin: 6px 0;
+      padding: 8px 12px;
+      font-style: italic;
+      color: #1e3a8a;
+      font-size: 9.5pt;
+      border-radius: 2px;
+    }
+    .qa-box {
+      background: #fdf2f8;
+      border: 1px solid #fbcfe8;
+      border-left: 4px solid #db2777;
+      padding: 10px 12px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      font-size: 9pt;
+    }
+    .qa-question {
+      font-weight: 700;
+      color: #9d174d;
+      margin-bottom: 4px;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-inst">
+    <b>IFRS — Campus Rio Grande</b> · Tecnologia em Análise e Desenvolvimento de Sistemas · Princípios e Padrões de Arquitetura
+  </div>
+
+  <div class="title-box">
+    <h1>Roteiro do Apresentador — Apresentação Final</h1>
+    <div class="subtitle">Guia Fala-a-Fala, Cronometragem e Defesa de Trade-offs para a Banca</div>
+    <div class="meta-grid">
+      <div><b>Aluna:</b> Francine Gonçalves Nunes Moraes</div>
+      <div><b>Professora:</b> Beatriz Costa</div>
+      <div><b>Duração Recomendada:</b> 15 a 18 minutos</div>
+      <div><b>Data:</b> Dezembro de 2026</div>
+    </div>
+  </div>
+
+  <h2>1. Instruções para a Apresentação</h2>
+  <ul>
+    <li><b>Foco em Justificativas:</b> A professora Beatriz Costa prioriza a defesa do *porquê* das escolhas técnicas e o reconhecimento dos seus custos e limitações, em vez de mera leitura de código.</li>
+    <li><b>Vocabulário Técnico:</b> Utilize com segurança termos como <i>Attribute-Driven Design (ADD)</i>, <i>Inversão de Dependência</i>, <i>Ports & Adapters</i>, <i>Bounded Contexts</i>, <i>Stateless</i>, <i>ACID</i> e <i>C4 Model</i>.</li>
+  </ul>
+
+  <h2>2. Guia de Fala Slide a Slide</h2>
+
+  <div class="slide-block">
+    <div class="slide-header-tag">
+      <span>Slide 1: Capa e Abertura</span>
+      <span class="time-badge">0:00 – 1:00</span>
+    </div>
+    <blockquote>
+      "Boa tarde, professora Beatriz e colegas. Meu nome é Francine e hoje apresento o resultado final do Projeto Integrador da disciplina de Princípios e Padrões de Arquitetura. Nosso trabalho consistiu no desenvolvimento e na documentação arquitetural da Community Bank API, uma plataforma voltada para a gestão de serviços financeiros solidários e moeda social em territórios de baixa renda. Ao longo da apresentação, vou demonstrar como evoluímos desde a visão inicial e o levantamento de atributos de qualidade, passando pela proposta arquitetural em camadas, a implementação prática em Arquitetura Hexagonal, a consolidação em C4 Model e ADRs, até o planejamento de segurança e evolução tecnológica."
+    </blockquote>
+  </div>
+
+  <div class="slide-block">
+    <div class="slide-header-tag">
+      <span>Slide 2: Contexto e Visão do Produto</span>
+      <span class="time-badge">1:00 – 2:15</span>
+    </div>
+    <blockquote>
+      "Para contextualizar o problema: bancos comunitários de desenvolvimento — como o Banco Palmas e os bancos da Rede Brasileira de Bancos Comunitários — têm a missão de estimular a economia popular local onde os bancos tradicionais não chegam. O dinheiro que circula é fruto do esforço da própria comunidade. Isso impõe três desafios fundamentais que a arquitetura precisou endereçar: Confiança (cada centavo precisa ser auditável e transparente para a comunidade); Acesso (moradores utilizam celulares simples sob conexões 3G/4G oscilantes); e Sustentabilidade (o projeto precisa ser mantido por equipe enxuta, com custo zero de infraestrutura). Nossos atores centrais são o morador correntista, o empreendedor solidário em busca de microcrédito produtivo, o gerente local e a assembleia comunitária."
+    </blockquote>
+  </div>
+
+  <div class="slide-block">
+    <div class="slide-header-tag">
+      <span>Slide 3: Drivers Arquiteturais e ASRs</span>
+      <span class="time-badge">2:15 – 3:45</span>
+    </div>
+    <blockquote>
+      "Como vimos na disciplina: 'um sistema pode funcionar e ainda assim ter uma arquitetura ruim'. A arquitetura define como o sistema se comporta sob restrições. Destaco os principais drivers levantados na Entrega 1: em Desempenho (QA-01), consultas de saldo respondidas em até 2 segundos no percentil 95; em Segurança (QA-02), bloqueio e auditoria imediata de acessos não autorizados; em Auditabilidade (QA-04), lançamentos contábeis imutáveis; e em Modificabilidade e Testabilidade (QA-06 e QA-10), criação de novas regras de crédito sem mexer em controllers e testabilidade sem precisar subir banco ou servidor HTTP."
+    </blockquote>
+  </div>
+
+  <div class="slide-block">
+    <div class="slide-header-tag">
+      <span>Slide 4: Abordagem Arquitetural Global</span>
+      <span class="time-badge">3:45 – 5:15</span>
+    </div>
+    <blockquote>
+      "Na Entrega 2, elaboramos a Proposta Arquitetural utilizando o método ADD. A decisão central foi adotar um Monólito Modular no modelo Cliente-Servidor. Por que não microserviços? Porque para a realidade do projeto, microserviços introduziriam latência de rede distribuída e custo de infraestrutura desnecessários. O monólito modular garante deploy trivial em processo único (npm start), comunicação local in-process ultraveloz e fronteiras de módulos (Bounded Contexts) estritamente preservadas. Adotamos o conceito de Cliente Magro (Thin Client), criamos o Value Object Money guardando valores em centavos inteiros para eliminar imprecisões de ponto flutuante, e estabelecemos lançamentos contábeis imutáveis para cálculo de saldo."
+    </blockquote>
+  </div>
+
+  <div class="page-break"></div>
+
+  <div class="slide-block">
+    <div class="slide-header-tag">
+      <span>Slide 5 e 6: Arquitetura Hexagonal (Módulo Crédito Solidário)</span>
+      <span class="time-badge">5:15 – 8:30</span>
+    </div>
+    <blockquote>
+      "Na atividade prática, implementamos a Solicitação de Crédito Solidário (POST /credit/solidarity) aplicando rigorosamente a Arquitetura Hexagonal (Ports & Adapters). Na borda de entrada temos o Driving Adapter SolidarityCreditController, que recebe requisições Express e aciona a Input Port CreateSolidarityCreditApplication. A Input Port é um contrato puro em TypeScript, sem depender de Express ou HTTP. O caso de uso CreateSolidarityCreditUseCase instancia as entidades de domínio: SolidarityEnterprise (que valida se a atividade produtiva é solidária e não especulativa) e CreditRequest (que aplica as regras do banco: taxa de juros zero, teto de R$ 15.000,00 e prazo de 1 a 36 parcelas). A persistência é delegada à Output Port CreditRequestRepository, implementada pelo Driven Adapter SqliteCreditRequestRepository usando o módulo nativo node:sqlite do Node.js 26, garantindo banco relacional real sem complexidade externa."
+    </blockquote>
+  </div>
+
+  <div class="slide-block">
+    <div class="slide-header-tag">
+      <span>Slide 7 e 8: Documentação C4 Model</span>
+      <span class="time-badge">8:30 – 11:15</span>
+    </div>
+    <blockquote>
+      "Na Entrega 3, documentamos o sistema nos 3 primeiros níveis do modelo C4: Nível 1 (Contexto), representando os moradores correntistas, empreendedores e gerentes, integrados com gateway SMS e com a Rede de Bancos Comunitários; Nível 2 (Contêineres), mapeando a SPA web/mobile, a API Node.js e o banco de dados relacional; e Nível 3 (Componentes), detalhando os controllers, portas de entrada, casos de uso, domínio e a Composition Root em container.ts, que garante que nenhum controller instancie repositórios diretamente."
+    </blockquote>
+  </div>
+
+  <div class="slide-block">
+    <div class="slide-header-tag">
+      <span>Slide 9 e 10: ADRs e Validação Prática</span>
+      <span class="time-badge">11:15 – 13:45</span>
+    </div>
+    <blockquote>
+      "Registramos 4 ADRs formais: ADR-0001 (Hexagonal no crédito), ADR-0002 (Persistência relacional sem ORM pesado), ADR-0003 (Monólito modular) e ADR-0004 (Autenticação stateless via JWT + RBAC). Comprovamos a arquitetura com uma suíte de 29 testes automatizados com o test runner nativo node:test, cobrindo regras de negócio, limites e integração HTTP de ponta a ponta, todos executando em cerca de 1,2 segundos com 100% de sucesso e zero dependências de teste pesadas."
+    </blockquote>
+  </div>
+
+  <div class="slide-block">
+    <div class="slide-header-tag">
+      <span>Slide 11 e 12: Evolução Arquitetural (Segurança e Tecnologias)</span>
+      <span class="time-badge">13:45 – 15:30</span>
+    </div>
+    <blockquote>
+      "Na Entrega 4, pesquisamos a evolução do sistema em dois eixos: em Segurança de APIs, selecionamos HTTPS/TLS 1.3 com mTLS para proteção em trânsito e B2B, autenticação JWT com RBAC e Refresh Tokens em cookies seguros, e Rate Limiting adaptativo com proteção contra força bruta. Em Evolução Tecnológica, projetamos a adoção de API Gateway (Kong/Traefik) para desonerar a API, Mensageria com RabbitMQ para notificações e eventos assíncronos, Observabilidade com OpenTelemetry e Grafana para painéis de transparência pública, e Cache com Redis para acelerar relatórios públicos de 50ms para menos de 2ms."
+    </blockquote>
+  </div>
+
+  <div class="slide-block">
+    <div class="slide-header-tag">
+      <span>Slide 13 e 14: Aprendizados e Encerramento</span>
+      <span class="time-badge">15:30 – 17:00</span>
+    </div>
+    <blockquote>
+      "Para concluir, os maiores aprendizados foram: arquitetura é a arte de escolher trade-offs; devemos evitar o overengineering mantendo abstrações apenas onde necessário; e o isolamento de domínio torna o sistema extremamente sustentável e testável. Agradeço à professora Beatriz e abro espaço para as perguntas da banca."
+    </blockquote>
+  </div>
+
+  <h2>3. Respostas Rápidas para Perguntas da Banca (FAQ)</h2>
+
+  <div class="qa-box">
+    <div class="qa-question">P: "Por que usaram SQLite nativo em vez de subir PostgreSQL no Docker para a entrega?"</div>
+    <b>R:</b> O SQLite nativo do Node.js 26 (node:sqlite) atendeu à exigência de banco de dados relacional com ACID e zero fricção de setup (npm test funciona instantaneamente). Graças à Inversão de Dependência via Output Port, para usar PostgreSQL em produção basta implementar um novo adapter e injetá-lo no container.ts, sem alterar o caso de uso.
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">P: "Qual a diferença prática entre o Módulo Contas e o Módulo Crédito?"</div>
+    <b>R:</b> No Módulo Contas em camadas, o controller chama diretamente a classe concreta do use case. No Módulo Crédito Hexagonal, o controller conversa exclusivamente através da Input Port (CreateSolidarityCreditApplication), permitindo que outros adaptadores (como filas RabbitMQ ou CLI) acionem o mesmo caso de uso sem modificações.
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">P: "Por que criaram o Value Object Money em centavos?"</div>
+    <b>R:</b> Números decimais comuns sofrem com imprecisões do padrão IEEE 754 de ponto flutuante (ex: 0.1 + 0.2 !== 0.3). Em sistemas financeiros, centavos inteiros garantem precisão matemática exata e rastreabilidade confiável.
+  </div>
+
+</body>
+</html>
