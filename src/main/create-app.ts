@@ -1,5 +1,6 @@
 import express from "express";
 import { accountsRoutes } from "../modules/accounts/presentation/accounts.routes.js";
+import { creditRoutes } from "../modules/credit/presentation/credit.routes.js";
 import { errorHandler } from "../shared/http/error-handler.js";
 import type { Container } from "./container.js";
 
@@ -21,6 +22,7 @@ export function createApp(container: Container) {
   });
 
   app.use("/accounts", accountsRoutes(container.accountsController));
+  app.use("/credit", creditRoutes(container.creditController));
 
   app.use(errorHandler);
 

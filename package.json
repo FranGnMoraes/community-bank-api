@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test test/account.test.ts test/deposit.use-case.test.ts test/accounts.http.test.ts"
+    "test": "tsx --test test/account.test.ts test/deposit.use-case.test.ts test/accounts.http.test.ts test/credit-domain.test.ts test/create-solidarity-credit.use-case.test.ts test/credit.http.test.ts"
   },
   "keywords": [
     "banco-comunitario",
