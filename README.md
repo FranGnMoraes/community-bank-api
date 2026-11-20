@@ -10,6 +10,8 @@ e renda em territórios de baixa renda.
 | `entrega-2-proposta-arquitetural` | 2. Proposta Arquitetural: depósito em conta, implementado em camadas | [`docs/Entrega2_Proposta_Arquitetural.pdf`](docs/Entrega2_Proposta_Arquitetural.pdf) |
 | `atividade-arquitetura-hexagonal` | Atividade: Crédito Solidário em Arquitetura Hexagonal (Ports & Adapters) | [`docs/Atividade_Arquitetura_Hexagonal.pdf`](docs/Atividade_Arquitetura_Hexagonal.pdf) |
 | `entrega-3-documentacao` | 3. Documentação: C4 Model (Contexto, Contêineres, Componentes) e 4 ADRs | [`docs/Entrega3_Documentacao.pdf`](docs/Entrega3_Documentacao.pdf) |
+| `entrega-4-evolucao` | 4. Evolução do Projeto: Segurança de APIs e Evolução Tecnológica | [`docs/Entrega4_Evolucao_Arquitetural.pdf`](docs/Entrega4_Evolucao_Arquitetural.pdf) |
+| `apresentacao-final` | Apresentação Final: Slides e Roteiro Completo do Apresentador | [`docs/Apresentacao_Final_Slides.pdf`](docs/Apresentacao_Final_Slides.pdf) · [`docs/Roteiro_Apresentacao_Final.pdf`](docs/Roteiro_Apresentacao_Final.pdf) |
 
 ## Arquitetura
 
