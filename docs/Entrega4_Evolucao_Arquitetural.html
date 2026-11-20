@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Entrega 4 — Evolução Arquitetural: Segurança e Tecnologias — Community Bank</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.5;
+      font-size: 10.5pt;
+      margin: 0;
+      padding: 0;
+    }
+    .header-inst {
+      border-bottom: 2px solid #0f766e;
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+      font-size: 9pt;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .header-inst b {
+      color: #0f766e;
+    }
+    .title-box {
+      background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+      border-left: 6px solid #0d9488;
+      padding: 18px 22px;
+      border-radius: 4px;
+      margin-bottom: 22px;
+    }
+    .badge {
+      display: inline-block;
+      background: #0d9488;
+      color: white;
+      font-size: 7.5pt;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 3px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 19pt;
+      color: #0f172a;
+    }
+    .subtitle {
+      font-size: 11pt;
+      color: #334155;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      font-size: 9pt;
+      color: #475569;
+      border-top: 1px dashed #cbd5e1;
+      padding-top: 8px;
+    }
+    .meta-grid a {
+      color: #0d9488;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    h2 {
+      color: #0f766e;
+      font-size: 13pt;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
+    h3 {
+      color: #1e293b;
+      font-size: 11pt;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+    p {
+      margin: 0 0 8px 0;
+      text-align: justify;
+    }
+    ul, ol {
+      margin: 0 0 10px 0;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 3px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 9pt;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 6px 9px;
+      text-align: left;
+    }
+    th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 600;
+    }
+    code {
+      font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+      font-size: 8.5pt;
+      background: #f1f5f9;
+      padding: 1px 4px;
+      border-radius: 3px;
+      color: #0f766e;
+    }
+    .card-tech {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 5px solid #0d9488;
+      border-radius: 4px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    .card-tech-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #0f766e;
+      margin-bottom: 4px;
+    }
+    .field-row {
+      margin-bottom: 5px;
+      font-size: 9pt;
+    }
+    .field-row b {
+      color: #334155;
+    }
+    .diagram-container {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-inst">
+    <b>IFRS — Campus Rio Grande</b> · Tecnologia em Análise e Desenvolvimento de Sistemas · Princípios e Padrões de Arquitetura
+  </div>
+
+  <div class="title-box">
+    <span class="badge">Entrega 4 · Pesquisa de Evolução</span>
+    <h1>Evolução da Arquitetura: Segurança e Tecnologias</h1>
+    <div class="subtitle">Mecanismos de Segurança de APIs e Adoção Tecnológica Futura para o Banco Comunitário</div>
+    <div class="meta-grid">
+      <div><b>Aluna:</b> Francine Gonçalves Nunes Moraes</div>
+      <div><b>Professora:</b> Beatriz Costa</div>
+      <div><b>Data:</b> 20 de novembro de 2026</div>
+      <div><b>Branch GitHub:</b> <a href="https://github.com/FranGnMoraes/community-bank-api/tree/entrega-4-evolucao">entrega-4-evolucao</a></div>
+    </div>
+  </div>
+
+  <h2>1. Introdução e Propósito da Pesquisa</h2>
+  <p>
+    Esta entrega formaliza a pesquisa arquitetural sobre as <b>possíveis evoluções para a plataforma do Banco Comunitário</b>, contemplando a proteção dos serviços financeiros solidários e o planejamento de sua sustentação tecnológica de médio e longo prazo. As escolhas aqui fundamentadas decorrem diretamente dos atributos de qualidade e restrições levantados nas etapas anteriores: necessidade de <b>segurança e confidencialidade</b> (QA-02), <b>alta performance e disponibilidade</b> (QA-01, QA-08), <b>resiliência e auditabilidade</b> (QA-04, QA-05) e a <b>realidade de baixo orçamento</b> da economia popular solidária (R4).
+  </p>
+
+  <h2>2. Mecanismos de Segurança de APIs</h2>
+  <p>
+    Para garantir a integridade dos fundos comunitários e a privacidade dos cidadãos, foram selecionados 3 mecanismos complementares de segurança:
+  </p>
+
+  <!-- Mecanismo 1 -->
+  <div class="card-tech">
+    <div class="card-tech-title">1. HTTPS/TLS 1.3 e Mutual TLS (mTLS)</div>
+    <div class="field-row">
+      <b>Qual problema resolve:</b> Impede ataques de interceptação de rede (<i>Man-in-the-Middle</i>), espionagem de credenciais (<i>eavesdropping</i>) e adulteração de dados financeiros em trânsito. Redes Wi-Fi comunitárias e conexões celulares 3G/4G abertas são vulneráveis a sniffing; o TLS 1.3 criptografa todas as mensagens fim-a-fim. O <b>mTLS (Mutual TLS)</b>, por sua vez, resolve a autenticação criptográfica estrita nas integrações máquina-a-máquina com a Rede Brasileira de Bancos Comunitários e gateways de pagamento externos.
+    </div>
+    <div class="field-row">
+      <b>Onde seria aplicado na arquitetura:</b> Na borda da infraestrutura (Reverse Proxy / Ingress do cluster) para conexões de clientes web/mobile, e nos conectores externos de saída (Driven Adapters) para autenticação mútua via certificados X.509.
+    </div>
+    <div class="field-row">
+      <b>Cuidados, limitações e trade-offs:</b> Exige gerenciamento automatizado de ciclo de vida e renovação de certificados (via Let's Encrypt / Certbot); dispositivos móveis antigos podem ter limitações de compatibilidade com cifras estritas; o handshake inicial consome milissegundos adicionais de rede, mitigados pelo modo 0-RTT e session tickets do TLS 1.3.
+    </div>
+  </div>
+
+  <!-- Mecanismo 2 -->
+  <div class="card-tech">
+    <div class="card-tech-title">2. Autenticação Stateless com JWT, RBAC e Chaves Rotativas (JWKS)</div>
+    <div class="field-row">
+      <b>Qual problema resolve:</b> Elimina o uso de sessões em memória no servidor (Stateful), que sobrecarregariam a infraestrutura do banco comunitário e seriam interrompidas constantemente pelas oscilações de sinal de celular dos moradores. Resolve também a necessidade de segregação estrita de privilégios de acesso (RBAC - Role-Based Access Control) entre correntistas, empreendedores solidários e gerentes com poder de aprovação de crédito.
+    </div>
+    <div class="field-row">
+      <b>Onde seria aplicado na arquitetura:</b> Como middleware de autenticação e autorização interceptando as rotas da API Express antes de atingir os controllers (Presentation Layer). O token verificado injeta os dados do usuário (ID, papéis e comunidade) no contexto da requisição.
+    </div>
+    <div class="field-row">
+      <b>Cuidados, limitações e trade-offs:</b> Tokens JWT não podem ser facilmente revogados antes da expiração; a solução adotada combina tempo de expiração curto (15 minutos para Access Token) com Refresh Tokens rotativos armazenados em cookies HTTP-only com flags <code>Secure</code> e <code>SameSite=Strict</code>; dados confidenciais (saldo, CPF) jamais devem ser gravados nas claims abertas do JWT.
+    </div>
+  </div>
+
+  <!-- Mecanismo 3 -->
+  <div class="card-tech">
+    <div class="card-tech-title">3. Rate Limiting Adaptativo e Proteção contra Força Bruta / Abuso</div>
+    <div class="field-row">
+      <b>Qual problema resolve:</b> Protege a infraestrutura contra ataques de negação de serviço (DoS), ataques de dicionário/força bruta em senhas e tentativas de varredura automatizada de contas (<i>account enumeration</i>). Como o banco comunitário opera com servidores de capacidade modesta (R4), um pico artificial malicioso poderia esgotar a CPU e indisponibilizar o serviço para a comunidade inteira.
+    </div>
+    <div class="field-row">
+      <b>Onde seria aplicado na arquitetura:</b> Como primeiro middleware da cadeia de processamento HTTP da API, aplicando limites diferenciados por IP para rotas públicas e por usuário autenticado para operações financeiras.
+    </div>
+    <div class="field-row">
+      <b>Cuidados, limitações e trade-offs:</b> Em bairros periféricos, muitos moradores navegam através do mesmo endereço IP público devido a CGNAT das operadoras ou Wi-Fi comunitário compartilhado em praças. Um rate limit agressivo baseado exclusivamente em IP bloquearia usuários legítimos; por isso, o rate limit deve ser suave por IP (ex: 100 req/min) e rígido por conta/token individual em rotas críticas (ex: 5 tentativas de login/min).
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <h2>3. Evolução Tecnológica da Arquitetura</h2>
+  <p>
+    Para suportar a ampliação do Banco Comunitário sem comprometer a simplicidade operacional, foram selecionadas 4 tecnologias que se integram de forma harmônica ao monólito modular existente:
+  </p>
+
+  <!-- Tecnologia 1 -->
+  <div class="card-tech">
+    <div class="card-tech-title">1. API Gateway (Kong ou Traefik)</div>
+    <div class="field-row">
+      <b>Qual problema resolve:</b> Centraliza responsabilidades transversais (terminação TLS, CORS, rate limiting, registro de acessos e roteamento), desonerando o código da aplicação de tarefas puramente operacionais de rede.
+    </div>
+    <div class="field-row">
+      <b>Onde entraria na arquitetura:</b> Como ponto único de entrada (Reverse Proxy inteligente) à frente da Community Bank API.
+    </div>
+    <div class="field-row">
+      <b>Módulos e serviços impactados:</b> Todos os módulos da API (Accounts, Credit, Transparência); remove middlewares de baixo nível do Express.
+    </div>
+    <div class="field-row">
+      <b>Por que faz sentido para o Banco Comunitário:</b> Se no futuro um módulo como o de Transparência Pública ou Notificações precisar ser escalado separadamente, o API Gateway permite redirecionar o tráfego sem que os aplicativos móveis dos clientes precisem ser atualizados.
+    </div>
+    <div class="field-row">
+      <b>Custos e trade-offs:</b> Introduz um ponto adicional na infraestrutura que exige configuração e monitoramento; acréscimo marginal de latência de rede (1 a 2 ms).
+    </div>
+  </div>
+
+  <!-- Tecnologia 2 -->
+  <div class="card-tech">
+    <div class="card-tech-title">2. Mensageria Assíncrona e Arquitetura Orientada a Eventos (RabbitMQ / Redis Streams)</div>
+    <div class="field-row">
+      <b>Qual problema resolve:</b> O acoplamento síncrono. Atualmente, se um serviço externo de envio de SMS ou webhook falhar, a requisição do usuário pode demorar ou travar. A mensageria desacopla a execução imediata das tarefas secundárias de segundo plano.
+    </div>
+    <div class="field-row">
+      <b>Onde entraria na arquitetura:</b> Conectada aos casos de uso através de <i>Output Ports</i> de eventos (ex: <code>DomainEventPublisher</code>); consumidores de eventos executam em processos de worker dedicados.
+    </div>
+    <div class="field-row">
+      <b>Módulos e serviços impactados:</b> Módulo <code>accounts</code> (eventos de depósito geram notificação e lançamento no extrato) e <code>credit</code> (eventos de solicitação notificam o gerente).
+    </div>
+    <div class="field-row">
+      <b>Por que faz sentido para o Banco Comunitário:</b> Garante resposta instantânea ao cidadão no celular (QA-01) e assegura que nenhuma notificação financeira seja perdida: se o provedor de SMS estiver fora do ar, as mensagens aguardam na fila até o reestabelecimento do serviço (resiliência).
+    </div>
+    <div class="field-row">
+      <b>Custos e trade-offs:</b> Complexidade de depuração assíncrona; necessidade de garantir idempotência nos consumidores para evitar envio de notificações duplicadas.
+    </div>
+  </div>
+
+  <!-- Tecnologia 3 -->
+  <div class="card-tech">
+    <div class="card-tech-title">3. Observabilidade e Tracing Distribuído (OpenTelemetry + Prometheus + Grafana)</div>
+    <div class="field-row">
+      <b>Qual problema resolve:</b> A "caixa-preta" operacional. Permite diagnosticar gargalos de desempenho em tempo real, monitorar o cumprimento das metas dos ASRs (ex: 95% das consultas de saldo respondidas em até 2 segundos) e auditar falhas em transações.
+    </div>
+    <div class="field-row">
+      <b>Onde entraria na arquitetura:</b> Instrumentação nos middlewares HTTP, nos casos de uso e nos adaptadores de banco de dados, exportando métricas via endpoint <code>/metrics</code>.
+    </div>
+    <div class="field-row">
+      <b>Módulos e serviços impactados:</b> Camada compartilhada da aplicação (<code>src/shared/telemetry/</code>); todos os módulos exportam dados operacionais padronizados.
+    </div>
+    <div class="field-row">
+      <b>Por que faz sentido para o Banco Comunitário:</b> Fortalece o pilar de <b>Transparência Pública</b>: gráficos de volume de crédito concedido, quantidade de depósitos e liquidez da moeda social podem ser exibidos em painéis abertos para a assembleia dos moradores.
+    </div>
+    <div class="field-row">
+      <b>Custos e trade-offs:</b> Pequeno consumo adicional de CPU para coleta e agregação de telemetria; necessidade de gerenciar o volume de armazenamento dos logs e métricas.
+    </div>
+  </div>
+
+  <!-- Tecnologia 4 -->
+  <div class="card-tech">
+    <div class="card-tech-title">4. Cache Distribuído em Memória (Redis)</div>
+    <div class="field-row">
+      <b>Qual problema resolve:</b> Evita consultas repetitivas e custosas ao banco de dados relacional para dados de leitura intensiva que mudam com baixa frequência (ex: relatórios diários de prestação de contas, regras de crédito vigentes e dados institucionais).
+    </div>
+    <div class="field-row">
+      <b>Onde entraria na arquitetura:</b> Como Driven Adapter de Cache posicionado à frente dos Repositórios de Leitura (Padrão <i>Cache-Aside</i>).
+    </div>
+    <div class="field-row">
+      <b>Módulos e serviços impactados:</b> Módulo de Transparência e consultas públicas de extratos e indicadores comunitários.
+    </div>
+    <div class="field-row">
+      <b>Por que faz sentido para o Banco Comunitário:</b> Reduz a carga de leitura no PostgreSQL em até 80%, viabilizando que milhares de consultas simultâneas no portal de transparência ocorram sem diminuir a velocidade das operações de depósito e crédito dos caixas.
+    </div>
+    <div class="field-row">
+      <b>Custos e trade-offs:</b> Custo de consumo de memória RAM; necessidade de definir políticas consistentes de expiração (TTL) e invalidação de cache para não exibir saldos defasados.
+    </div>
+  </div>
+
+  <h2>4. Visão da Arquitetura Evoluída</h2>
+  <p>
+    O diagrama a seguir sintetiza a topologia futura do Banco Comunitário com a incorporação dos mecanismos de segurança e inovações tecnológicas pesquisadas:
+  </p>
+
+  <div class="diagram-container">
+    <svg width="670" height="230" viewBox="0 0 670 230" xmlns="http://www.w3.org/2000/svg">
+      <!-- Clients -->
+      <rect x="15" y="80" width="90" height="70" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="60" y="105" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#0369a1" text-anchor="middle">Dispositivos</text>
+      <text x="60" y="120" font-family="sans-serif" font-size="8" fill="#0284c7" text-anchor="middle">Mobile / Web</text>
+      <text x="60" y="135" font-family="sans-serif" font-size="7" fill="#64748b" text-anchor="middle">(HTTPS/TLS 1.3)</text>
+
+      <!-- API Gateway -->
+      <rect x="135" y="65" width="105" height="100" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+      <text x="187" y="85" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#92400e" text-anchor="middle">API GATEWAY</text>
+      <text x="187" y="100" font-family="sans-serif" font-size="7.5" fill="#78350f" text-anchor="middle">(Kong / Traefik)</text>
+      <text x="187" y="118" font-family="sans-serif" font-size="7" fill="#b45309" text-anchor="middle">• Rate Limiting</text>
+      <text x="187" y="130" font-family="sans-serif" font-size="7" fill="#b45309" text-anchor="middle">• JWT Validation</text>
+      <text x="187" y="142" font-family="sans-serif" font-size="7" fill="#b45309" text-anchor="middle">• Terminação TLS</text>
+
+      <!-- Monolith API -->
+      <rect x="270" y="45" width="150" height="140" rx="6" fill="#1e40af" stroke="#1d4ed8" stroke-width="2"/>
+      <text x="345" y="65" font-family="sans-serif" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">COMMUNITY BANK API</text>
+      <text x="345" y="80" font-family="sans-serif" font-size="7.5" fill="#bfdbfe" text-anchor="middle">(Node.js Monólito Modular)</text>
+      <rect x="280" y="90" width="130" height="24" rx="3" fill="#2563eb"/>
+      <text x="345" y="105" font-family="sans-serif" font-size="7" font-weight="bold" fill="#ffffff" text-anchor="middle">Contas & Depósitos</text>
+      <rect x="280" y="118" width="130" height="24" rx="3" fill="#0d9488"/>
+      <text x="345" y="133" font-family="sans-serif" font-size="7" font-weight="bold" fill="#ffffff" text-anchor="middle">Crédito (Hexagonal)</text>
+      <rect x="280" y="146" width="130" height="24" rx="3" fill="#3b82f6"/>
+      <text x="345" y="161" font-family="sans-serif" font-size="7" font-weight="bold" fill="#ffffff" text-anchor="middle">OpenTelemetry Tracing</text>
+
+      <!-- Cache Redis -->
+      <rect x="450" y="25" width="100" height="50" rx="5" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+      <text x="500" y="45" font-family="sans-serif" font-size="8" font-weight="bold" fill="#991b1b" text-anchor="middle">Redis Cache</text>
+      <text x="500" y="58" font-family="sans-serif" font-size="7" fill="#b91c1c" text-anchor="middle">Prestação Contas</text>
+
+      <!-- PostgreSQL DB -->
+      <rect x="450" y="90" width="100" height="55" rx="5" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+      <text x="500" y="112" font-family="sans-serif" font-size="8" font-weight="bold" fill="#047857" text-anchor="middle">PostgreSQL DB</text>
+      <text x="500" y="125" font-family="sans-serif" font-size="7" fill="#065f46" text-anchor="middle">Lançamentos ACID</text>
+
+      <!-- RabbitMQ -->
+      <rect x="450" y="160" width="100" height="55" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="500" y="180" font-family="sans-serif" font-size="8" font-weight="bold" fill="#c2410c" text-anchor="middle">RabbitMQ Fila</text>
+      <text x="500" y="195" font-family="sans-serif" font-size="7" fill="#9a3412" text-anchor="middle">Notificações e SMS</text>
+
+      <!-- Observability Stack -->
+      <rect x="575" y="80" width="85" height="70" rx="5" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5"/>
+      <text x="617" y="105" font-family="sans-serif" font-size="8" font-weight="bold" fill="#6b21a8" text-anchor="middle">Grafana / Prom</text>
+      <text x="617" y="120" font-family="sans-serif" font-size="7" fill="#7e22ce" text-anchor="middle">Painel Público de</text>
+      <text x="617" y="132" font-family="sans-serif" font-size="7" fill="#7e22ce" text-anchor="middle">Indicadores</text>
+
+      <!-- Arrows -->
+      <line x1="105" y1="115" x2="135" y2="115" stroke="#0284c7" stroke-width="1.5"/>
+      <line x1="240" y1="115" x2="270" y2="115" stroke="#d97706" stroke-width="1.5"/>
+      <line x1="420" y1="85" x2="450" y2="50" stroke="#dc2626" stroke-width="1.5"/>
+      <line x1="420" y1="115" x2="450" y2="115" stroke="#059669" stroke-width="1.5"/>
+      <line x1="420" y1="145" x2="450" y2="180" stroke="#ea580c" stroke-width="1.5"/>
+      <line x1="420" y1="170" x2="575" y2="120" stroke="#9333ea" stroke-width="1.5" stroke-dasharray="2 2"/>
+    </svg>
+  </div>
+
+  <h2>5. Conclusão da Pesquisa</h2>
+  <p>
+    A pesquisa comprova que a arquitetura do <b>Community Bank</b> foi planejada com maturidade: o monólito modular atual resolve com maestria os requisitos de simplicidade e baixo custo, enquanto a adoção progressiva de <b>segurança multicamada</b> (HTTPS, JWT, Rate Limiting) e <b>mecanismos auxiliares</b> (API Gateway, filas e cache) pavimenta um futuro sólido, eficiente e resiliente para o fortalecimento da economia comunitária.
+  </p>
+
+</body>
+</html>
